@@ -1,1 +1,30 @@
-<p>login works</p>
+<form class="auth-form"
+      autocomplete="off"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email"
+               matInput
+               formControlName="email">
+        <mat-error *ngIf="loginForm.get('email').hasError('email')">not valid email</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">required field</mat-error>
+    </mat-form-field>
+    <mat-form-field appShowHidePassword>
+        <mat-label>Password</mat-label>
+        <input type="password"
+               matInput
+               formControlName="password">
+        <i class="far fa-eye auth-show-hide-pass"
+           matSuffix></i>
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">required field</mat-error>
+    </mat-form-field>
+    <button mat-raised-button
+            type="submit"
+            class="submit-button"
+            [disabled]="loginForm.invalid"
+            color="primary">
+        Submit
+    </button>
+</form>
+

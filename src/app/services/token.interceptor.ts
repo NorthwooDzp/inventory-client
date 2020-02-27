@@ -8,6 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -16,11 +17,11 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        const token = localStorage.getItem('token');
+        const token = LocalStorageService.getToken();
         if (token) {
             request = request.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: token
                 }
             });
         }
@@ -31,6 +32,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     private handleError(err: HttpErrorResponse): Observable<HttpEvent<unknown>> {
         if (err.status === 401) {
+            LocalStorageService.clearToken();
             this.router.navigate(['auth', 'login']);
         }
         return throwError(err);
