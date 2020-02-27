@@ -1,0 +1,27 @@
+.auth-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.auth-wrapper {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    padding: 16px 16px 24px;
+    box-shadow: 0 0 3px -1px grey;
+}
+
+.auth-heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mat-tab-links {
+    display: flex;
+}
+
+.auth-link {
+    flex-grow: 1;
+}
