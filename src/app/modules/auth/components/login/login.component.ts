@@ -27,10 +27,22 @@ export class LoginComponent implements OnInit {
 
     public login() {
         const credentials: AuthCredentials = this.loginForm.value;
-        console.log(credentials);
         this.authHttpService.login(credentials).subscribe(({token}) => {
             LocalStorageService.setToken(token);
             this.router.navigate(['']);
+        }, err => {
+            switch (err.status) {
+                case 404:
+                    this.loginForm.get('email').setErrors({
+                        notInSystem: true
+                    });
+                    break;
+                case 401:
+                    this.loginForm.get('password').setErrors({
+                        wrongPassword: true
+                    });
+                    break;
+            }
         });
     }
 

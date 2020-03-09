@@ -1,7 +1,7 @@
 <div class="auth-container">
     <div class="auth-wrapper">
         <h4 class="auth-heading">
-            Welcome to inventory app!
+            Computools inventory app
         </h4>
         <nav mat-tab-nav-bar>
             <a mat-tab-link
@@ -10,6 +10,7 @@
                routerLinkActive
                #rla="routerLinkActive"
                [active]="rla.isActive"
+               [disabled]="link.disabled"
                class="auth-link">
                 {{link.label}}
             </a>

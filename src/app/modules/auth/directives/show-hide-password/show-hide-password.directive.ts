@@ -1,10 +1,10 @@
-import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Inject } from '@angular/core';
 
 @Directive({
     selector: '[appShowHidePassword]'
 })
 export class ShowHidePasswordDirective implements AfterViewInit {
-    private passwordIsSHown: boolean = false;
+    private passwordIsShown: boolean = false;
 
     constructor(private element: ElementRef) {
     }
@@ -14,8 +14,8 @@ export class ShowHidePasswordDirective implements AfterViewInit {
         const icon = element.querySelector('i[matsuffix]');
         const input = element.querySelector('input[matinput]');
         icon.addEventListener('click', () => {
-            this.passwordIsSHown = !this.passwordIsSHown;
-            if (this.passwordIsSHown) {
+            this.passwordIsShown = !this.passwordIsShown;
+            if (this.passwordIsShown) {
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
                 input.setAttribute('type', 'text');

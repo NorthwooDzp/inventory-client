@@ -7,24 +7,28 @@
         <input type="email"
                matInput
                formControlName="email">
-        <mat-error *ngIf="loginForm.get('email').hasError('email')">not valid email</mat-error>
-        <mat-error *ngIf="loginForm.get('email').hasError('required')">required field</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('email')">Неверный формат email</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('required')">обязательное поле</mat-error>
+        <mat-error *ngIf="loginForm.get('email').hasError('notInSystem')">
+            Пользователь с таким email не зарегистрирован
+        </mat-error>
     </mat-form-field>
     <mat-form-field appShowHidePassword>
-        <mat-label>Password</mat-label>
+        <mat-label>Пароль</mat-label>
         <input type="password"
                matInput
                formControlName="password">
         <i class="far fa-eye auth-show-hide-pass"
            matSuffix></i>
-        <mat-error *ngIf="loginForm.get('email').hasError('required')">required field</mat-error>
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">обязательное поле</mat-error>
+        <mat-error *ngIf="loginForm.get('password').hasError('wrongPassword')">Неверный пароль</mat-error>
     </mat-form-field>
     <button mat-raised-button
             type="submit"
             class="submit-button"
             [disabled]="loginForm.invalid"
             color="primary">
-        Submit
+        Войти
     </button>
 </form>
 
