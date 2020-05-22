@@ -1,0 +1,21 @@
+.inventory {
+    &__header {
+        height: 60px;
+        background: aqua;
+    }
+
+    &__wrapper {
+        display: flex;
+        height: calc(100vh - 60px);
+    }
+
+    &__nav {
+        flex: 0 0 250px;
+        background: orange;
+        height: 100%;
+    }
+
+    &__content {
+        flex: 0 1 auto;
+    }
+}

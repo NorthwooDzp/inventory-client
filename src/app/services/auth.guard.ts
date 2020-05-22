@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router) {
     }
 
-    canActivate(): Promise<boolean> {
+    public canActivate(): Promise<boolean> {
         return new Promise<boolean>(resolve => {
             if (LocalStorageService.getToken()) {
                 resolve(true);

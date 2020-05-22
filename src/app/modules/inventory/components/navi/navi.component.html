@@ -1,1 +1,8 @@
-<p>navi works!</p>
+<nav class="nav">
+    <a class="nav__link"
+       *ngFor="let link of links"
+       [routerLink]="link.path"
+       routerLinkActive="active">
+        {{link.label}}
+    </a>
+</nav>

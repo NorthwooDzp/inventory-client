@@ -1,1 +1,14 @@
-<p>modal-window works!</p>
+<div class="modal">
+    <div class="modal__wrapper"
+         [ngClass]="getModalClass()">
+        <div class="modal__close"
+             [ngClass]=""
+             (click)="closeWindow()">
+            <i class="fas fa-times"></i>
+        </div>
+        <h3 class="modal__heading">{{title}}</h3>
+        <div class="modal__content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

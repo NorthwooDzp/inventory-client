@@ -1,0 +1,6 @@
+<app-modal-window [title]="title"
+                  [mode]="mode"
+                  (modalClose)="closePopup()">
+    <form [formGroup]="employeeForm"
+          (ngSubmit)="submitForm()"></form>
+</app-modal-window>
