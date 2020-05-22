@@ -4,7 +4,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: 'Open Sans', "Helvetica Neue", sans-serif; }
 @import "assets/fonts/fonts";
 
-
 $custom-typography: mat-typography-config($font-family: '"Open Sans", sans-serif;');
 @include mat-core($custom-typography);
 
