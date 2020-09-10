@@ -6,6 +6,9 @@ import { CreateEditEmployeeComponent, EmployeesListComponent } from './component
 import { ModalWindowModule } from '../../../common-features/modal-window/modal-window.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
 
@@ -19,7 +22,9 @@ import { MatButtonModule } from '@angular/material/button';
         EmployeeRoutingModule,
         ModalWindowModule,
         ReactiveFormsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatInputModule,
+        NgScrollbarModule
     ]
 })
 export class EmployeeModule {

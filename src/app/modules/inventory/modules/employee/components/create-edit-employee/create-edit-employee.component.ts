@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { EmployeeService } from '../../../../services';
 import { ViewModes } from '../../../../../../models';
 import { Employee, EmployeeDTO } from '../../../../models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EventsService } from '../../../../../../services/events.service';
 
 @Component({
     selector: 'app-create-edit-employee',
@@ -12,9 +12,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateEditEmployeeComponent implements OnInit {
     @Input() mode: ViewModes;
-    @Input() employee: Employee;
-    @Output() save: EventEmitter<EmployeeDTO> = new EventEmitter();
+    @Input() employee: Employee ;
+    @Output() save: EventEmitter<Employee | EmployeeDTO> = new EventEmitter();
     @Output() cancel: EventEmitter<void> = new EventEmitter();
+
+    constructor(private eventsService: EventsService) {
+    }
 
     public title: string;
     public employeeForm: FormGroup;
@@ -29,12 +32,23 @@ export class CreateEditEmployeeComponent implements OnInit {
         }
     }
 
-    public closePopup() {
+    public onModalClose() {
         this.cancel.emit();
     }
 
+    public closeModal(): void {
+        this.eventsService.closeModalWindow();
+    }
+
     public submitForm(): void {
-        this.save.emit(this.employeeForm.getRawValue() as EmployeeDTO);
+        switch (this.mode) {
+            case ViewModes.CREATE_MODE:
+                this.save.emit(this.employeeForm.getRawValue() as Employee);
+                break;
+            case ViewModes.EDIT_MODE:
+                this.save.emit(this.employeeForm.getRawValue() as EmployeeDTO);
+                break;
+        }
     }
 
     private createForm(employee?: Employee) {

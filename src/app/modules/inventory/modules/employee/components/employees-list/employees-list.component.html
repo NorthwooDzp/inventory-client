@@ -1,9 +1,33 @@
 <app-create-edit-employee [mode]="mode"
-                          (cancel)="mode = modes.DISPLAY_MODE"
+                          (cancel)="onModalClose()"
+                          (save)="saveEmployee($event)"
                           *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE">
 </app-create-edit-employee>
-<button class="main-button"
-        type="button"
-        (click)="addEmployee()">
-    Добавить сотрудника
-</button>
+<div class="employee-list">
+    <ng-scrollbar [visibility]="'hover'">
+        <table>
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Должность</th>
+                <th>Список техники</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.firstName}} {{employee.lastName}}</td>
+                <td>{{employee.position}}</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </ng-scrollbar>
+    <button mat-fab color="primary"
+            class="create-button"
+            type="button"
+            (click)="showCreateForm()">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
+

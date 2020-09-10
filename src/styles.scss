@@ -1,15 +1,22 @@
 @import '~@angular/material/theming';
 
-html, body { height: 100%; }
+html, body { height: 100%; font-size: 16px;}
 body { margin: 0; font-family: 'Open Sans', "Helvetica Neue", sans-serif; }
 @import "assets/fonts/fonts";
 
-$custom-typography: mat-typography-config($font-family: '"Open Sans", sans-serif;');
+$custom-typography: mat-typography-config(
+    $font-family: '"Open Sans", sans-serif;',
+    $body-2:        mat-typography-level(16px, 24px, 500),
+    $body-1:        mat-typography-level(16px, 20px, 400)
+);
 @include mat-core($custom-typography);
 
 * {
     box-sizing: border-box;
-    font-size: 16px;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .main-button {
@@ -23,4 +30,20 @@ $custom-typography: mat-typography-config($font-family: '"Open Sans", sans-serif
     color: black;
     background: none;
     cursor: pointer;
+}
+
+.mainForm {
+    margin: 16px;
+    &__inputRow {
+        display: flex;
+        margin: 0 -8px;
+        & > * {
+            margin: 0 8px;
+            flex: 1 1 50%;
+        }
+    }
+}
+.ng-scroll-content {
+    display: inline-block;
+    vertical-align: middle;
 }
