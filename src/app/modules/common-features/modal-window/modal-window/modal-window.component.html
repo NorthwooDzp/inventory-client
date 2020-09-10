@@ -1,8 +1,6 @@
 <div class="modal">
-    <div class="modal__wrapper"
-         [ngClass]="getModalClass()">
+    <div class="modal__wrapper" @appearance>
         <div class="modal__close"
-             [ngClass]=""
              (click)="closeWindow()">
             <i class="fas fa-times"></i>
         </div>

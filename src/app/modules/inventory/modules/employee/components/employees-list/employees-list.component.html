@@ -1,8 +1,3 @@
-<app-create-edit-employee [mode]="mode"
-                          (cancel)="onModalClose()"
-                          (save)="saveEmployee($event)"
-                          *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE">
-</app-create-edit-employee>
 <div class="employee-list">
     <ng-scrollbar [visibility]="'hover'">
         <table>
@@ -31,3 +26,8 @@
     </button>
 </div>
 
+<app-create-edit-employee [mode]="mode"
+                          (cancel)="onModalClose()"
+                          (save)="saveEmployee($event)"
+                          *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE">
+</app-create-edit-employee>

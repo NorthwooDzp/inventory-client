@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ViewModes } from '../../../../../../models';
 import { Employee, EmployeeDTO } from '../../../../models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EventsService } from '../../../../../../services/events.service';
 
 @Component({
     selector: 'app-create-edit-employee',
@@ -15,9 +14,6 @@ export class CreateEditEmployeeComponent implements OnInit {
     @Input() employee: Employee ;
     @Output() save: EventEmitter<Employee | EmployeeDTO> = new EventEmitter();
     @Output() cancel: EventEmitter<void> = new EventEmitter();
-
-    constructor(private eventsService: EventsService) {
-    }
 
     public title: string;
     public employeeForm: FormGroup;
@@ -34,10 +30,6 @@ export class CreateEditEmployeeComponent implements OnInit {
 
     public onModalClose() {
         this.cancel.emit();
-    }
-
-    public closeModal(): void {
-        this.eventsService.closeModalWindow();
     }
 
     public submitForm(): void {

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../../services';
 import { Employee, EmployeeDTO } from '../../../../models';
 import { ViewModes } from '../../../../../../models';
-import { EventsService } from '../../../../../../services/events.service';
 
 @Component({
     selector: 'app-employees-list',
@@ -15,8 +14,7 @@ export class EmployeesListComponent implements OnInit {
     public modes = ViewModes;
     public mode: ViewModes = this.modes.DISPLAY_MODE;
 
-    constructor(private employeeService: EmployeeService,
-                private eventService: EventsService) {
+    constructor(private employeeService: EmployeeService) {
     }
 
     public ngOnInit(): void {
@@ -50,7 +48,6 @@ export class EmployeesListComponent implements OnInit {
     private createEmployee(employee: Employee): void {
         this.employeeService.create(employee).subscribe(newEmployee => {
             console.log(newEmployee);
-            this.eventService.closeModalWindow();
         });
     }
 

@@ -14,7 +14,6 @@
         padding: 16px;
         border-radius: 10px;
         margin: auto;
-        animation: modal-appear 0.5s linear forwards;
         border: 2px solid white;
 
         &.create {
@@ -26,10 +25,6 @@
         &.delete {
             background-color: #c63d3d;
         }
-    }
-
-    &__closing {
-        animation: modal-disappear 0.5s linear forwards;
     }
 
     &__close {
@@ -50,23 +45,4 @@
     }
 
 
-}
-
-@keyframes modal-appear {
-    0% {
-        transform: translateY(100vh);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes modal-disappear {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
 }

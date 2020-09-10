@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 

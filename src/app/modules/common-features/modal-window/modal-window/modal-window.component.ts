@@ -1,36 +1,31 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ViewModes } from '../../../../models';
-import { EventsService } from '../../../../services/events.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-modal-window',
     templateUrl: './modal-window.component.html',
-    styleUrls: ['./modal-window.component.scss']
+    styleUrls: ['./modal-window.component.scss'],
+    animations: [
+        trigger('appearance', [
+            state('in', style({transform: 'translateY(0)'})),
+            transition(':enter', [
+                style({transform: 'translateY(100vh)'}),
+                animate('300ms', style({transform: 'translateY(0)'}))
+            ]),
+            transition(':leave', [
+                animate('300ms', style({transform: 'translateY(100vh)'}))
+            ])
+        ])
+    ]
 })
-export class ModalWindowComponent implements OnInit {
+export class ModalWindowComponent {
     @Input() public title: string;
     @Output() public modalClose: EventEmitter<void> = new EventEmitter();
     @Input() public mode: ViewModes;
-    public isClosing: boolean = false;
-
-    constructor(private eventsservice: EventsService) {
-    }
-
-    public ngOnInit() {
-        this.eventsservice.modalCloseEmitter.subscribe(() => {
-            this.closeWindow();
-        });
-    }
 
     public closeWindow(): void {
-        this.isClosing = true;
-        const to = setTimeout(() => {
-            this.isClosing = false;
-            this.modalClose.emit();
-        }, 800);
+        this.modalClose.emit();
     }
 
-    public getModalClass(): string[] {
-        return [this.mode ? this.mode : '', this.isClosing ? ' modal__closing' : ''];
-    }
 }
