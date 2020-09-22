@@ -1,5 +1,4 @@
 <app-modal-window [title]="title"
-                  [mode]="mode"
                   (modalClose)="onModalClose()">
     <form [formGroup]="employeeForm"
           class="mainForm"
@@ -42,6 +41,7 @@
                 <button mat-raised-button
                         class="full-width"
                         type="submit"
+                        [disabled]="employeeForm.invalid"
                         color="primary">Сохранить
                 </button>
             </div>

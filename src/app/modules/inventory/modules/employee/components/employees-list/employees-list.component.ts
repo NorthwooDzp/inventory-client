@@ -47,7 +47,8 @@ export class EmployeesListComponent implements OnInit {
 
     private createEmployee(employee: Employee): void {
         this.employeeService.create(employee).subscribe(newEmployee => {
-            console.log(newEmployee);
+            this.employees.push(employee);
+            this.mode = this.modes.DISPLAY_MODE;
         });
     }
 
