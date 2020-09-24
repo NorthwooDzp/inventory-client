@@ -1,12 +1,18 @@
 .modal {
     position: fixed;
-    background-color: rgba(214, 234, 168, 0.5);
     left: 0;
-    top: -100vh;
+    top: 0;
     right: 0;
-    bottom: -100vh;
+    bottom: 0;
     display: flex;
-
+    &__backdrop {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(214, 234, 168, 0.5);
+    }
     &__wrapper {
         width: 600px;
         position: relative;

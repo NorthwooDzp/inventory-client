@@ -1,13 +1,21 @@
 @import '~@angular/material/theming';
 
-html, body { height: 100%; font-size: 16px;}
-body { margin: 0; font-family: 'Open Sans', "Helvetica Neue", sans-serif; }
+html, body {
+    height: 100%;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', "Helvetica Neue", sans-serif;
+}
+
 @import "assets/fonts/fonts";
 
 $custom-typography: mat-typography-config(
     $font-family: '"Open Sans", sans-serif;',
-    $body-2:        mat-typography-level(16px, 24px, 500),
-    $body-1:        mat-typography-level(16px, 20px, 400)
+    $body-2: mat-typography-level(16px, 24px, 500),
+    $body-1: mat-typography-level(16px, 20px, 400)
 );
 @include mat-core($custom-typography);
 
@@ -19,31 +27,53 @@ $custom-typography: mat-typography-config(
     width: 100%;
 }
 
-.main-button {
-    padding: 6px 12px;
-    min-width: 60px;
-    font-size: 14px;
-    border-radius: 3px;
-    border-width: 1px;
-    box-shadow: none;
-    border-color: black;
-    color: black;
-    background: none;
-    cursor: pointer;
-}
-
 .mainForm {
     margin: 16px;
+
     &__inputRow {
         display: flex;
         margin: 0 -8px;
+
         & > * {
             margin: 0 8px;
             flex: 1 1 50%;
         }
     }
 }
+
 .ng-scroll-content {
     display: inline-block;
     vertical-align: middle;
+}
+
+.mainTable {
+    display: grid;
+    padding: 1px;
+
+    &__header {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        background-color: #e5e5e5;
+    }
+
+    &__cell {
+        border: 1px solid #e5e5e5;
+    }
+
+    &__header, &__cell {
+        padding: 6px 12px;
+        &.first-cell {
+            border-radius: 3px 0 0 3px;
+        }
+        &.last-cell {
+            border-radius: 0 3px 3px 0;
+        }
+    }
+
+    &.employee-table {
+        grid-template-columns: repeat(2, 1fr) 135px;
+    }
 }
