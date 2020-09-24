@@ -1,57 +1,54 @@
-<app-modal-window [title]="title"
-                  (modalClose)="onModalClose()">
-    <form [formGroup]="employeeForm"
-          class="mainForm"
-          (ngSubmit)="submitForm()">
-        <div class="mainForm__inputRow">
-            <mat-form-field class="input-full-width">
-                <mat-label>Имя сотрудника</mat-label>
-                <input type="text"
-                       matInput
-                       formControlName="firstName">
-                <mat-error *ngIf="employeeForm.get('firstName').hasError('required')">
-                    Обязательное поле!
-                </mat-error>
-            </mat-form-field>
+<form [formGroup]="employeeForm"
+      class="mainForm"
+      (ngSubmit)="submitForm()">
+    <div class="mainForm__inputRow">
+        <mat-form-field class="input-full-width">
+            <mat-label>Имя сотрудника</mat-label>
+            <input type="text"
+                   matInput
+                   formControlName="firstName">
+            <mat-error *ngIf="employeeForm.get('firstName').hasError('required')">
+                Обязательное поле!
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="mainForm__inputRow">
+        <mat-form-field class="input-full-width">
+            <mat-label>Фамилия сотрудника</mat-label>
+            <input type="text"
+                   matInput
+                   formControlName="lastName">
+            <mat-error *ngIf="employeeForm.get('lastName').hasError('required')">
+                Обязательное поле!
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="mainForm__inputRow">
+        <mat-form-field class="input-full-width">
+            <mat-label>Должность</mat-label>
+            <input type="text"
+                   matInput
+                   formControlName="position">
+            <mat-error *ngIf="employeeForm.get('position').hasError('required')">
+                Обязательное поле!
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="mainForm__inputRow">
+        <div>
+            <button mat-raised-button
+                    class="full-width"
+                    type="submit"
+                    [disabled]="employeeForm.invalid"
+                    color="primary">Сохранить
+            </button>
         </div>
-        <div class="mainForm__inputRow">
-            <mat-form-field class="input-full-width">
-                <mat-label>Фамилия сотрудника</mat-label>
-                <input type="text"
-                       matInput
-                       formControlName="lastName">
-                <mat-error *ngIf="employeeForm.get('lastName').hasError('required')">
-                    Обязательное поле!
-                </mat-error>
-            </mat-form-field>
+        <div>
+            <button mat-raised-button
+                    class="full-width"
+                    (click)="onModalClose()"
+                    type="button">Отмена
+            </button>
         </div>
-        <div class="mainForm__inputRow">
-            <mat-form-field class="input-full-width">
-                <mat-label>Должность</mat-label>
-                <input type="text"
-                       matInput
-                       formControlName="position">
-                <mat-error *ngIf="employeeForm.get('position').hasError('required')">
-                    Обязательное поле!
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="mainForm__inputRow">
-            <div>
-                <button mat-raised-button
-                        class="full-width"
-                        type="submit"
-                        [disabled]="employeeForm.invalid"
-                        color="primary">Сохранить
-                </button>
-            </div>
-            <div>
-                <button mat-raised-button
-                        class="full-width"
-                        (click)="onModalClose()"
-                        type="button">Отмена
-                </button>
-            </div>
-        </div>
-    </form>
-</app-modal-window>
+    </div>
+</form>

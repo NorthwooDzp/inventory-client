@@ -2,9 +2,9 @@
     position: fixed;
     background-color: rgba(214, 234, 168, 0.5);
     left: 0;
-    top: 0;
+    top: -100vh;
     right: 0;
-    bottom: 0;
+    bottom: -100vh;
     display: flex;
 
     &__wrapper {

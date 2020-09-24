@@ -1,5 +1,7 @@
-<div class="modal">
-    <div class="modal__wrapper" @modalWindow>
+<div class="modal"
+     *ngIf="visible"
+     @modalWindow>
+    <div class="modal__wrapper">
         <div class="modal__close"
              (click)="closeWindow()">
             <i class="fas fa-times"></i>

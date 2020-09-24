@@ -27,8 +27,12 @@
     </button>
 </div>
 
-<app-create-edit-employee [mode]="mode"
-                          (cancel)="onModalClose()"
-                          (save)="saveEmployee($event)"
-                          *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE">
-</app-create-edit-employee>
+<app-modal-window [title]="mode === modes.CREATE_MODE ? 'Добавить сотрудника' : 'Редактировать сотрудника'"
+                  [visible]="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE"
+                  (modalClose)="onModalClose()">
+    <app-create-edit-employee [mode]="mode"
+                              *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE"
+                              (cancel)="onModalClose()"
+                              (save)="saveEmployee($event)">
+    </app-create-edit-employee>
+</app-modal-window>

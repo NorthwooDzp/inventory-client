@@ -11,21 +11,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateEditEmployeeComponent implements OnInit {
     @Input() mode: ViewModes;
-    @Input() employee: Employee ;
+    @Input() employee: Employee;
     @Output() save: EventEmitter<Employee | EmployeeDTO> = new EventEmitter();
     @Output() cancel: EventEmitter<void> = new EventEmitter();
 
-    public title: string;
     public employeeForm: FormGroup;
 
     public ngOnInit(): void {
-        if (this.mode === ViewModes.CREATE_MODE) {
-            this.title = 'Добавить нового сотрудника';
-            this.createForm();
-        } else if (this.mode === ViewModes.EDIT_MODE) {
-            this.title = 'Редактировать данные сотрудника';
-            this.createForm(this.employee);
+        switch (this.mode) {
+            case ViewModes.CREATE_MODE:
+                this.createForm();
+                break;
+            case ViewModes.EDIT_MODE:
+                this.createForm(this.employee);
+                break;
         }
+
     }
 
     public onModalClose() {
