@@ -6,10 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './services';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,

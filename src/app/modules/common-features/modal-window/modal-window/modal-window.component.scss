@@ -5,6 +5,8 @@
     right: 0;
     bottom: 0;
     display: flex;
+    z-index: 100;
+
     &__backdrop {
         position: fixed;
         left: 0;
@@ -12,7 +14,9 @@
         right: 0;
         bottom: 0;
         background-color: rgba(214, 234, 168, 0.5);
+        z-index: 99;
     }
+
     &__wrapper {
         width: 600px;
         position: relative;
@@ -25,9 +29,11 @@
         &.create {
             background-color: #b2f7b2;
         }
+
         &.edit {
             background-color: #fff0c5;
         }
+
         &.delete {
             background-color: #c63d3d;
         }

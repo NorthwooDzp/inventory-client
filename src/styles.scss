@@ -27,6 +27,10 @@ $custom-typography: mat-typography-config(
     width: 100%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .mainForm {
     margin: 16px;
 
