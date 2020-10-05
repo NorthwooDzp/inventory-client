@@ -26,6 +26,12 @@
         margin: auto;
         border: 2px solid white;
 
+        &.warning {
+            background-color: #fc9779;
+            color: white;
+            font-weight: bold;
+        }
+
         &.create {
             background-color: #b2f7b2;
         }

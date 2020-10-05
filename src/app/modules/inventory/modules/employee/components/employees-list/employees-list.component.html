@@ -14,7 +14,14 @@
                 <div class="mainTable__cell">
                     {{employee.position}}
                 </div>
-                <div class="mainTable__cell last-cell" ></div>
+                <div class="mainTable__cell last-cell">
+                    <i class="fas fa-pen"
+                       (click)="changeMode(modes.EDIT_MODE, employee._id)"></i>
+                    <i class="fas fa-trash"
+                       (click)="changeMode(modes.DELETE_MODE, employee._id)"></i>
+                    <i class="fas fa-arrow-circle-right"
+                       [routerLink]="employee._id"></i>
+                </div>
             </ng-container>
 
         </div>
@@ -25,7 +32,7 @@
             class="create-button"
             type="button"
             [title]="'Добавить сотрудника'"
-            (click)="showCreateForm()">
+            (click)="changeMode(modes.CREATE_MODE)">
         <i class="fas fa-plus"></i>
     </button>
 </div>
@@ -34,8 +41,32 @@
                   [visible]="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE"
                   (modalClose)="onModalClose()">
     <app-create-edit-employee [mode]="mode"
+                              [employee]="selectedEmployee"
                               *ngIf="mode === modes.EDIT_MODE || mode === modes.CREATE_MODE"
                               (cancel)="onModalClose()"
                               (save)="saveEmployee($event)">
     </app-create-edit-employee>
+</app-modal-window>
+<app-modal-window [title]="'Удалить сотрудника'"
+                  [isWarning]="true"
+                  [visible]="mode === modes.DELETE_MODE"
+                  (modalClose)="onModalClose()">
+    <div class="warning-text"> Вы уверены что хотите удалить выбранного сотрудника?</div>
+    <div class="mainForm__inputRow">
+        <div>
+            <button mat-raised-button
+                    color="warn"
+                    class="full-width"
+                    (click)="deleteEmployee()"
+                    type="button">Удалить
+            </button>
+        </div>
+        <div>
+            <button mat-stroked-button
+                    class="full-width"
+                    (click)="onModalClose()"
+                    type="button">Отмена
+            </button>
+        </div>
+    </div>
 </app-modal-window>

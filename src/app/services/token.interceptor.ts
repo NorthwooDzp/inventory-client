@@ -6,7 +6,7 @@ import {
     HttpInterceptor, HttpErrorResponse, HttpResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, delay, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from './local-storage.service';
 import { EventHandlerService } from './event-handler.service';
@@ -19,7 +19,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
     public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         this.eventHandler.showSpinner();
-        console.log('shown');
         const token = LocalStorageService.getToken();
         if (token) {
             request = request.clone({
@@ -36,7 +35,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 return res;
             }),
             catchError(err => this.handleError(err))
-        )
+        );
     }
 
     private handleError(err: HttpErrorResponse): Observable<HttpEvent<unknown>> {

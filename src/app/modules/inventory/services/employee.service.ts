@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Employee, EmployeeDTO } from '../models';
+
+import { environment } from '../../../../environments/environment';
+import { CreateEmployeeDTO, EditEmployeeDTO, Employee } from '../models';
 
 @Injectable({
     providedIn: 'root'
@@ -21,11 +22,11 @@ export class EmployeeService {
         return this.http.get<Employee>(`${this.baseUrl}/${id}`);
     }
 
-    public create(employee: Employee): Observable<Employee> {
+    public create(employee: CreateEmployeeDTO): Observable<Employee> {
         return this.http.post<Employee>(this.baseUrl, employee);
     }
 
-    public update(id: string, employee: EmployeeDTO): Observable<Employee> {
+    public update(id: string, employee: EditEmployeeDTO): Observable<Employee> {
         return this.http.put<Employee>(`${this.baseUrl}/${id}`, employee);
     }
 

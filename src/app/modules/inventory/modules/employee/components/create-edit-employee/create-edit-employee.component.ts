@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { ViewModes } from '../../../../../../models';
-import { Employee, EmployeeDTO } from '../../../../models';
+import { CreateEmployeeDTO, EditEmployeeDTO, Employee } from '../../../../models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CreateEditEmployeeComponent implements OnInit {
     @Input() mode: ViewModes;
     @Input() employee: Employee;
-    @Output() save: EventEmitter<Employee | EmployeeDTO> = new EventEmitter();
+    @Output() save: EventEmitter<CreateEmployeeDTO | EditEmployeeDTO> = new EventEmitter();
     @Output() cancel: EventEmitter<void> = new EventEmitter();
 
     public employeeForm: FormGroup;
@@ -36,10 +36,10 @@ export class CreateEditEmployeeComponent implements OnInit {
     public submitForm(): void {
         switch (this.mode) {
             case ViewModes.CREATE_MODE:
-                this.save.emit(this.employeeForm.getRawValue() as Employee);
+                this.save.emit(this.employeeForm.getRawValue() as CreateEmployeeDTO);
                 break;
             case ViewModes.EDIT_MODE:
-                this.save.emit(this.employeeForm.getRawValue() as EmployeeDTO);
+                this.save.emit(this.employeeForm.getRawValue() as EditEmployeeDTO);
                 break;
         }
     }

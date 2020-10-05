@@ -30,6 +30,7 @@ const modalAnimationDuration = 300;
 export class ModalWindowComponent {
     @Input() public visible: boolean;
     @Input() public title: string;
+    @Input() public isWarning: boolean;
     @Output() public modalClose: EventEmitter<void> = new EventEmitter();
 
     public closeWindow(): void {

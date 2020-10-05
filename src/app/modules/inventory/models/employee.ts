@@ -1,9 +1,12 @@
-export interface Employee {
-    _id?: string;
+export interface Employee extends CreateEmployeeDTO{
+    _id: string;
+}
+
+export interface CreateEmployeeDTO {
     firstName: string;
     lastName: string;
     position: string;
 }
 
-export interface EmployeeDTO extends Partial<Employee> {
+export interface EditEmployeeDTO extends Partial<CreateEmployeeDTO> {
 }

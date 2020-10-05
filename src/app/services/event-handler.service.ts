@@ -18,6 +18,7 @@ export class EventHandlerService {
     }
 
     public showError(message: string): void {
+        this.hideSpinner();
         this.isErrorDisplayed.next(true);
         this.errorMessage.next(message);
     }

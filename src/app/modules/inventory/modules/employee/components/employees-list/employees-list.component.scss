@@ -12,4 +12,20 @@
             font-size: 24px;
         }
     }
+
+    .mainTable {
+        &__cell.last-cell {
+            display: flex;
+            align-content: center;
+            i {
+                margin: 0 4px;
+                cursor: pointer;
+                color: #555555;
+                &:hover {
+                    transform: scale(1.35);
+                    color: #00ff00;
+                }
+            }
+        }
+    }
 }

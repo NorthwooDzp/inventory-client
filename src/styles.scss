@@ -78,6 +78,10 @@ $custom-typography: mat-typography-config(
     }
 
     &.employee-table {
-        grid-template-columns: repeat(2, 1fr) 135px;
+        grid-template-columns: repeat(2, 1fr) 95px;
     }
+}
+
+.warning-text {
+    margin-bottom: 24px;
 }
